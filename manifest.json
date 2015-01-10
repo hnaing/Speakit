@@ -1,0 +1,41 @@
+{
+    "manifest_version": 2,
+    "name": "Help the Fob Out",
+    "description": "When your brather fob can't proununce something, help the bra out",
+    "version": "1.0",
+
+    "permissions": ["ttsEngine", "tabs"],
+    "tts_engine": {
+          "voices": [
+            {
+              "voice_name": "Alice",
+              "lang": "en-US",
+              "gender": "female",
+              "event_types": ["start", "marker", "end"]
+            },
+            {
+              "voice_name": "Pat",
+              "lang": "en-US",
+              "event_types": ["end"]
+            }
+          ]
+    },
+
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_title": "Read"
+    },
+
+    "background": {
+        "scripts": ["eventPage.js"],
+        "persistent": false
+    },
+
+    "content_scripts": [
+      {
+        "matches": ["http://*/*"],
+        "js": ["contentScript.js"]
+      }
+    ]
+
+}
